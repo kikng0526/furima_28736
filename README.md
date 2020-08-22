@@ -37,12 +37,12 @@ Things you may want to cover:
 | password       | string | null: false |
 | email          | string | null: false |
 | password       | string | null: false |
-| date           | integer| null: false |
+| date           | date   | null: false |
 
 ### Association
 
-- has_many :product
-- has_many :comment
+- has_many :products
+- has_many :comments
 - has_one :management
 
 ## products テーブル
@@ -52,14 +52,17 @@ Things you may want to cover:
 | name     | string     | null: false |
 | text     | text       | null: false |
 | price    | integer    | null: false |
-| detail   | string     | null: false |
-| delivery | string     | null: false |
+| category | string     | null: false |
+| status   | string     | null: false |
+| burden   | string     | null: false |
+| area     | string     | null: false |
+| day      | string     | null: false |
 | user     | references | null: false |
 
 ### Association
 
 - belongs_to :user
-- has_many :comment
+- has_many :comments
 - has_one :management
 
 ## comments テーブル
@@ -86,13 +89,14 @@ Things you may want to cover:
 
 - belongs_to :product
 - belongs_to :user
-- has_one :addresses
+- has_one :address
 
 ## addresses テーブル
 
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
 | postal_code    | string     | null: false                    |
+| prefecture     | string     | null: false                    |
 | city           | string     | null: false                    |
 | address_line   | string     | null: false                    |
 | building_name  | string     |                                |
