@@ -36,7 +36,6 @@ Things you may want to cover:
 | nickname       | string | null: false |
 | password       | string | null: false |
 | email          | string | null: false |
-| password       | string | null: false |
 | date           | date   | null: false |
 
 ### Association
@@ -71,7 +70,7 @@ Things you may want to cover:
 | ------  | ---------- | ------------------------------ |
 | comment | text       | null: false                    |
 | user    | references | null: false, foreign_key: true |
-| room    | references | null: false, foreign_key: true |
+| product | references | null: false, foreign_key: true |
 
 ### Association
 
