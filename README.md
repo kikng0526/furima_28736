@@ -47,17 +47,17 @@ Things you may want to cover:
 
 ## products テーブル
 
-| Column   | Type       | Options     |
-| -------- | ------     | ----------- |
-| name     | string     | null: false |
-| text     | text       | null: false |
-| price    | integer    | null: false |
-| category | string     | null: false |
-| status   | string     | null: false |
-| burden   | string     | null: false |
-| area     | string     | null: false |
-| day      | string     | null: false |
-| user     | references | null: false |
+| Column      | Type       | Options                        |
+| ----------  | ------     | ------------------------------ |
+| name        | string     | null: false                    |
+| text        | text       | null: false                    |
+| price       | integer    | null: false                    |
+| category_id | integer    | null: false                    |
+| status_id   | integer    | null: false                    |
+| burden_id   | integer    | null: false                    |
+| area_id     | integer    | null: false                    |
+| day_id      | integer    | null: false                    |
+| user        | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -96,7 +96,7 @@ Things you may want to cover:
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
 | postal_code    | string     | null: false                    |
-| prefecture     | string     | null: false                    |
+| prefecture_id  | integer    | null: false                    |
 | city           | string     | null: false                    |
 | address_line   | string     | null: false                    |
 | building_name  | string     |                                |
