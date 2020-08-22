@@ -37,28 +37,30 @@ Things you may want to cover:
 | password       | string | null: false |
 | email          | string | null: false |
 | password       | string | null: false |
-| birth          | integer| null: false |
+| date           | integer| null: false |
 
 ### Association
 
 - has_many :product
 - has_many :comment
-- has_one :information
+- has_one :management
 
 ## products テーブル
 
-| Column | Type       | Options     |
-| ------ | ------     | ----------- |
-| name   | string     | null: false |
-| text   | text       | null: false |
-| price  | integer    | null: false |
-| user   | references | null: false |
+| Column   | Type       | Options     |
+| -------- | ------     | ----------- |
+| name     | string     | null: false |
+| text     | text       | null: false |
+| price    | integer    | null: false |
+| detail   | string     | null: false |
+| delivery | string     | null: false |
+| user     | references | null: false |
 
 ### Association
 
 - belongs_to :user
 - has_many :comment
-- has_one :information
+- has_one :management
 
 ## comments テーブル
 
@@ -73,7 +75,7 @@ Things you may want to cover:
 - belongs_to :product
 - belongs_to :user
 
-## information テーブル ##購入管理をするテーブル
+## managements テーブル ##購入管理をするテーブル
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
@@ -84,21 +86,21 @@ Things you may want to cover:
 
 - belongs_to :product
 - belongs_to :user
-- has_one :address
+- has_one :addresses
 
-## address テーブル
+## addresses テーブル
 
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
-| postal_code    | integer    | null: false                    |
+| postal_code    | string     | null: false                    |
 | city           | string     | null: false                    |
 | address_line   | string     | null: false                    |
 | building_name  | string     |                                |
-| phone_number   | integer    | null: false                    |
-| information_id | references | null: false, foreign_key: true |
+| phone_number   | string     | null: false                    |
+| management     | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :information
+- belongs_to :management
 
 ## comments テーブル
