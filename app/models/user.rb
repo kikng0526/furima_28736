@@ -5,12 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :nickname, :first_name, :first_kana, :last_name, :last_kana, :date, presence: true
 
-  # before_save { self.email = email.downcase }
-
-  # # emailに対して一意性制約をかける
-  # VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  # validates :email, {presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }}
-
   # 本名を全角指定
   VALID_FIRST_NAME_REGEX = /\A[ぁ-んァ-ン一-龥]/
   validates :first_name, { presence: true, format: { with: VALID_FIRST_NAME_REGEX } }
