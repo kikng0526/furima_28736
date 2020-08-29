@@ -8,6 +8,10 @@ class Product < ApplicationRecord
   belongs_to_active_hash :day
   has_one_attached :image
 
+  #価格が300~999999以内で登録できるようにする
+  validates :price, :numericality => { :greater_than_or_equal_to => 300 }  # 価格が300以上であるか
+  validates :price, :numericality => { :less_than_or_equal_to => 9999999}     # 数字が9999999以下であるか
+
   #空の投稿を保存できないようにする
   validates :name, :text, :price, :image, presence: true
 

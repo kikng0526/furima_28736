@@ -56,7 +56,21 @@ RSpec.describe Product, type: :model do
       @product.valid?
       expect(@product.errors.full_messages).to include("Image can't be blank")
     end
+
+    it 'priceが300以下だと登録できない' do
+      @product.price = 0
+      @product.valid?
+      expect(@product.errors.full_messages).to include("Price must be greater than or equal to 300")
+    end
+
+    it 'priceが9999999以上だと登録できない' do
+      @product.price = 10000000
+      @product.valid?
+      expect(@product.errors.full_messages).to include("Price must be less than or equal to 9999999")
+    end
   end
+
+
 
   context '登録がうまくいく時' do
 
