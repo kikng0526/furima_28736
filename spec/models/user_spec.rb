@@ -102,7 +102,6 @@ RSpec.describe User, type: :model do
   end
 
   context '登録がうまくいく時' do
-
     it '必要な情報が全て存在すれば登録できる' do
       expect(@user).to be_valid
     end
