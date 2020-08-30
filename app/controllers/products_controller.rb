@@ -14,6 +14,10 @@ class ProductsController < ApplicationController
     end
   end
 
+  def index
+    @products = Product.includes(:user).order("created_at DESC")
+  end
+
   private
 
   def product_params

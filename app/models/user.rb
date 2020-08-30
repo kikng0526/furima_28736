@@ -6,6 +6,7 @@ class User < ApplicationRecord
   validates :nickname, :first_name, :first_kana, :last_name, :last_kana, :date, presence: true
 
   has_many :products
+  has_one :management
 
   # 本名を全角指定
   VALID_FIRST_NAME_REGEX = /\A[ぁ-んァ-ン一-龥]/.freeze
