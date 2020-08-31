@@ -30,6 +30,10 @@ class ProductsController < ApplicationController
     end
   end
 
+  def edit
+    @product = Product.new
+  end
+
   private
 
   def product_params
