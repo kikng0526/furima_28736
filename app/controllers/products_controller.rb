@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
-  before_action :set_product, only: [:show, :destroy]
+  before_action :set_product, only: [:show, :destroy, :edit, :update]
 
   def new
     @product = Product.new
@@ -31,7 +31,14 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @product = Product.new
+  end
+
+  def update
+    if @product.update(product_params)
+      redirect_to product_path
+    else
+      render :edit
+    end
   end
 
   private
