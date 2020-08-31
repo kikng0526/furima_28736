@@ -15,7 +15,7 @@ class ProductsController < ApplicationController
   end
 
   def index
-    @products = Product.includes(:user).order("created_at DESC")
+    @products = Product.includes(:user).order('created_at DESC')
   end
 
   def show
