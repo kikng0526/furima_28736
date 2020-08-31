@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
-  before_action :set_product, only:[:show,:destroy]
+  before_action :set_product, only: [:show, :destroy]
 
   def new
     @product = Product.new
@@ -23,8 +23,8 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-      @product.destroy
-      redirect_to root_path
+    @product.destroy
+    redirect_to root_path
   end
 
   private
