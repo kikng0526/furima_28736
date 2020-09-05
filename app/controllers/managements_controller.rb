@@ -1,5 +1,4 @@
 class ManagementsController < ApplicationController
-  # before_action :correct_user, only: [:create, :index, :show]
   before_action :authenticate_user!
 
   def index

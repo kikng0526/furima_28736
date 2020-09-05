@@ -16,6 +16,6 @@ class Product < ApplicationRecord
  # 空の投稿を保存できないようにする
  validates :name, :text, :price, :image, presence: true
  # ジャンルの選択が「--」の時は保存できないようにする
- validates :category_id, :status_id, :burden_id, :area_id, :day_id, :prefecture_id, numericality: { other_than: 0 }
+ validates :category_id, :status_id, :burden_id, :area_id, :day_id, numericality: { other_than: 0 }
 
 end
