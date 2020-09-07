@@ -28,7 +28,6 @@ RSpec.describe Product, type: :model do
 
     it 'status_idが空だと登録できない' do
       @product.status_id = 0
-
       @product.valid?
       expect(@product.errors.full_messages).to include('Status must be other than 0')
     end
