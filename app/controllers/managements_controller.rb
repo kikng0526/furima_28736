@@ -11,7 +11,7 @@ class ManagementsController < ApplicationController
     if @management.valid?
       pay_item
       @management.save
-      return redirect_to root_path
+      redirect_to root_path
     else
       @product = Product.find(params[:product_id])
       render 'index'
@@ -26,14 +26,12 @@ class ManagementsController < ApplicationController
 
   def pay_item
     @product = Product.find(params[:product_id])
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
-    Payjp.api_key = "sk_test_23ec2fb2d2e4e3df18c1b8e5"  # PAY.JPテスト秘密鍵
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+    Payjp.api_key = 'sk_test_23ec2fb2d2e4e3df18c1b8e5'  # PAY.JPテスト秘密鍵
     Payjp::Charge.create(
-      amount: @product.price,  # 商品の値段
+      amount: @product.price, # 商品の値段
       card: params[:token],   # カードトークン
-      currency:'jpy'          # 通貨の種類(日本円)
-    );
+      currency: 'jpy'          # 通貨の種類(日本円)
+    )
   end
- 
-
 end
