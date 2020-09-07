@@ -15,8 +15,6 @@ class UserFurima
     validates :phone_number, { length: { maximum: 11 }, format: { with: VALID_POSTAL_CODE_REGEX } }
   end
 
-  
-
   def save
     # 商品の情報
     management = Management.create(product_id: product_id, user_id: user_id)
