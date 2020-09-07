@@ -12,7 +12,7 @@ class UserFurima
     validates :area_id, numericality: { other_than: 0, message: "can't be blank" }
     # 電話番号は半角数字で11桁以内
     VALID_PHONE_NUMBER_REGEX = /\A[0-9]+\z/.freeze
-    validates :phone_number, { length: { maximum: 11 }, format: { with: VALID_POSTAL_CODE_REGEX } }
+    validates :phone_number, { length: { maximum: 11 }, format: { with: VALID_PHONE_NUMBER_REGEX } }
   end
 
   def save
