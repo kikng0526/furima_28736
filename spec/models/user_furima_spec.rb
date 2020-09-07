@@ -49,6 +49,12 @@ RSpec.describe UserFurima, type: :model do
       expect(@user_furima.errors.full_messages).to include("Phone number is too long (maximum is 11 characters)")
     end
 
+    it 'phone_numberにハイフンがある場合登録できない' do
+      @user_furima.phone_number = 111-1111-1111
+      @user_furima.valid?
+      expect(@user_furima.errors.full_messages).to include("Phone number is invalid")
+    end
+
     it 'tokenが空だと保存できないこと' do
       @user_furima.token = nil
       @user_furima.valid?
