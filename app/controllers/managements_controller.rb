@@ -1,8 +1,8 @@
 class ManagementsController < ApplicationController
   before_action :authenticate_user!
+  before_action :product_find, only:[:index, :create, :pay_item]
 
   def index
-    @product = Product.find(params[:product_id])
     @management = UserFurima.new
   end
 
@@ -13,7 +13,6 @@ class ManagementsController < ApplicationController
       @management.save
       redirect_to root_path
     else
-      @product = Product.find(params[:product_id])
       render 'index'
     end
   end
@@ -24,9 +23,12 @@ class ManagementsController < ApplicationController
     params.permit(:token, :text, :price, :postal_code, :area_id, :city, :address_line, :building_name, :phone_number, :product_id).merge(user_id: current_user.id)
   end
 
-  def pay_item
+  def product_find
     @product = Product.find(params[:product_id])
-    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+  end
+
+
+  def pay_item
     Payjp.api_key = 'sk_test_23ec2fb2d2e4e3df18c1b8e5'  # PAY.JPテスト秘密鍵
     Payjp::Charge.create(
       amount: @product.price, # 商品の値段
