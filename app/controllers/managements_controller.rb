@@ -3,6 +3,7 @@ class ManagementsController < ApplicationController
 
   def index
     @product = Product.find(params[:product_id])
+    @management = UserFurima.new
   end
 
   def create
