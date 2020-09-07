@@ -6,12 +6,16 @@ class UserFurima
 
   with_options presence: true do
     # 郵便番号は000-0000の形とする。
-    validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/ }
+    VALID_POSTAL_CODE_REGEX = /\A[0-9]{3}-[0-9]{4}\z/.freeze
+    validates :postal_code, { format: { with: VALID_POSTAL_CODE_REGEX } }
     # ジャンルの選択が「--」の時は保存できないようにする
     validates :area_id, numericality: { other_than: 0, message: "can't be blank" }
     # 電話番号は半角数字で11桁以内
-    validates :phone_number, length: { maximum: 11 }, format: { with: /\A[0-9]+\z/ }
+    VALID_PHONE_NUMBER_REGEX = /\A[0-9]+\z/.freeze
+    validates :phone_number, { length: { maximum: 11 }, format: { with: VALID_POSTAL_CODE_REGEX } }
   end
+
+  
 
   def save
     # 商品の情報

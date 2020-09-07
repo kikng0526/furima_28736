@@ -49,7 +49,7 @@ RSpec.describe UserFurima, type: :model do
     end
 
     it 'phone_numberにハイフンがある場合登録できない' do
-      @user_furima.phone_number = 111 - 1111 - 1111
+      @user_furima.phone_number = '111-1111-1111'
       @user_furima.valid?
       expect(@user_furima.errors.full_messages).to include('Phone number is invalid')
     end
